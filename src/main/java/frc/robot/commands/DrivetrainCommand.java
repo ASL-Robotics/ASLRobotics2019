@@ -14,18 +14,19 @@ public class DrivetrainCommand extends Command {
   public DrivetrainCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.DrivetrainSubsystem); //Add in Robot.java
+    requires(Robot.DRIVETRAIN); 
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.DRIVETRAIN.tankDrive(0, 0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
+    Robot.DRIVETRAIN.arcadeDrive(Robot.oi.stick.getRawAxis(1), Robot.oi.stick.getRawAxis(3));
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -37,6 +38,7 @@ public class DrivetrainCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.DRIVETRAIN.tankDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same
