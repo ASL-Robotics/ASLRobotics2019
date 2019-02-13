@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ReleaseCargo extends Command {
   public ReleaseCargo() {
@@ -35,6 +36,7 @@ public class ReleaseCargo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    RobotMap.hasBall = false;
     Robot.CARRIAGE.stopCarridge();
   }
 

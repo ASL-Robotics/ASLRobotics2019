@@ -10,11 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ElevatorDecrement extends Command {
+public class ElevatorStage1 extends Command {
 
-  private boolean isComplete = false;
 
-  public ElevatorDecrement() {
+  public ElevatorStage1() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.ELEVATOR);
@@ -23,19 +22,18 @@ public class ElevatorDecrement extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.ELEVATOR.setStage(1);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.ELEVATOR.decrement();
-    isComplete = true;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isComplete;
+    return Robot.ELEVATOR.getEncoderDistance() >= Robot.ELEVATOR.getTargetDistance(1);
   }
 
   // Called once after isFinished returns true
@@ -47,6 +45,5 @@ public class ElevatorDecrement extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

@@ -23,7 +23,7 @@ public class ArmPiston extends Subsystem {
   private DoubleSolenoid arm;
 
   public ArmPiston() {
-    arm = new DoubleSolenoid(RobotMap.INTAKE_LIFT_PISTON_1,RobotMap.INTAKE_LIFT_PISTON_2);
+    arm = new DoubleSolenoid(RobotMap.INTAKE_LIFT_PISTON_1, RobotMap.INTAKE_LIFT_PISTON_2);
   }
 
   public void setForward(){

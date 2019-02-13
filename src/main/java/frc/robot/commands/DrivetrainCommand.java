@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class DrivetrainCommand extends Command {
   public DrivetrainCommand() {
@@ -26,7 +27,7 @@ public class DrivetrainCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.DRIVETRAIN.arcadeDrive(Robot.oi.DRIVER.getRawAxis(1), Robot.oi.DRIVER.getRawAxis(3));
+    Robot.DRIVETRAIN.arcadeDrive(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
   }
 
   // Make this return true when this Command no longer needs to run execute()
