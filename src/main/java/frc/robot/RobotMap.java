@@ -21,6 +21,10 @@ public class RobotMap {
   public static final int OPERATOR_CONTROL_PORT = 0;
 
     // buttons
+  public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
+  public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
+
+  
   public static final int CARGO_BUTTON_PORT = 2;
   public static final int CARGO_ARM_DOWN_BUTTON_PORT = 10;
 
@@ -28,10 +32,10 @@ public class RobotMap {
 
   public static final int HATCH_BUTTON_PORT = 5;
 
-  public static final int ELEVATOR_1_BUTTON_PORT = 1;
-  public static final int ELEVATOR_2_BUTTON_PORT = 3;
-  public static final int ELEVATOR_3_BUTTON_PORT = 4;
-  public static final int ELEVATOR_INTERRUPT_BUTTON_PORT = 9;
+  // public static final int ELEVATOR_1_BUTTON_PORT = 1;
+  // public static final int ELEVATOR_2_BUTTON_PORT = 3;
+  // public static final int ELEVATOR_3_BUTTON_PORT = 4;
+  // public static final int ELEVATOR_INTERRUPT_BUTTON_PORT = 9;
 
     // axes
   public static final int DRIVE_FORWARD_AXIS = 1;
@@ -56,11 +60,11 @@ public class RobotMap {
 
 
   // PISTONS
-  public static final int HATCH_PISTON_1 = 0;
-  public static final int HATCH_PISTON_2 = 1;
+  public static final int HATCH_PISTON_1 = 2;
+  public static final int HATCH_PISTON_2 = 3;
 
-  public static final int INTAKE_LIFT_PISTON_1 = 2;
-  public static final int INTAKE_LIFT_PISTON_2 = 3;
+  public static final int INTAKE_LIFT_PISTON_1 = 1;
+  public static final int INTAKE_LIFT_PISTON_2 = 0;
 
 
   // DIGITAL INPUTS
@@ -68,15 +72,16 @@ public class RobotMap {
   public static final int PHOTO_SWITCH_CENTER = 1;
   public static final int PHOTO_SWITCH_RIGHT = 2;
 
-  public static final int INTAKE_UP_LIMIT = 3;
-  public static final int INTAKE_DOWN_LIMIT = 4;
-  public static final int ELEVATOR_BALL_SWITCH = 5;
+  // public static final int INTAKE_UP_LIMIT = 3;
+  // public static final int INTAKE_DOWN_LIMIT = 4;
+  public static final int ELEVATOR_BALL_SWITCH = 3;
 
 
   // SPEEDS
     // cargo
-  public static final double CARRIAGE_SPEED = .5;
-  public static final double INTAKE_LIFT_SPEED = .5;
+  public static final double CARRIAGE_ACQUIRE_SPEED = 1.0;
+  public static final double CARRIAGE_RELEASE_SPEED = 1.0;
+    // public static final double INTAKE_LIFT_SPEED = .5;
 
     // elevator
   public static final double ELEVATOR_LIFT_SPEED = .4;

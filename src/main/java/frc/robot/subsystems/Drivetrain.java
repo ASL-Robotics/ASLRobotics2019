@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -30,6 +31,9 @@ public class Drivetrain extends Subsystem {
   private SpeedControllerGroup right;
   private DifferentialDrive driveTrain;
 
+  private DigitalInput l, c, r;
+
+
   public Drivetrain(){
     frontLeft = new WPI_TalonSRX(RobotMap.FRONT_LEFT_DRIVE_MOTOR);
     backLeft = new WPI_TalonSRX(RobotMap.BACK_LEFT_DRIVE_MOTOR);
@@ -40,13 +44,29 @@ public class Drivetrain extends Subsystem {
     right = new SpeedControllerGroup(frontRight, backRight);
     driveTrain = new DifferentialDrive(left, right);
 
+    l = new DigitalInput(RobotMap.PHOTO_SWITCH_LEFT);
+    c = new DigitalInput(RobotMap.PHOTO_SWITCH_CENTER);
+    r = new DigitalInput(RobotMap.PHOTO_SWITCH_RIGHT);
+
   }
   public void tankDrive(double leftSpeed, double rightSpeed){
     driveTrain.tankDrive(leftSpeed, rightSpeed);
   }
   public void arcadeDrive(double x, double z){
-    driveTrain.arcadeDrive(x, z);
+    driveTrain.arcadeDrive(Math.pow(x, 2), Math.pow(z, 2));
   }
+
+  public String getPESensors(){
+    String ret = "";
+    ret += l.get()? "1" : "0";
+    ret += c.get()? "1" : "0";
+    ret += r.get()? "1" : "0";
+    return ret;
+  }
+
+  public boolean getLeftSensor(){ return l.get(); }
+  public boolean getCenterSensor(){ return c.get(); }
+  public boolean getRightSensor(){ return r.get(); }
 
   @Override
   public void initDefaultCommand() {

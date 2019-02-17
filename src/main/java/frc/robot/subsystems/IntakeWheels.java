@@ -23,13 +23,15 @@ import frc.robot.RobotMap;
 
 public class IntakeWheels extends Subsystem {
   //private WPI_TalonSRX armMotor;
-  private WPI_VictorSPX wheelMotor; // WPI_TalonSRX wheelMotor;
+  private WPI_TalonSRX wheelMotor;
+  // private WPI_VictorSPX wheelMotor;
   //private DigitalInput armDown;
   //private DigitalInput armUp;
 
   public IntakeWheels(){
     //armMotor = new WPI_TalonSRX(1);
-    wheelMotor = new WPI_VictorSPX(RobotMap.INTAKE_MOTOR); // WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
+    // wheelMotor = new WPI_VictorSPX(RobotMap.INTAKE_MOTOR); 
+    wheelMotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
     //armDown = new DigitalInput(3);
     //armUp = new DigitalInput(4);
   }
