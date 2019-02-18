@@ -25,13 +25,13 @@ public class Carriage extends Subsystem {
   }
 
   public void release(){
-    leftCarridge.set(RobotMap.CARRIAGE_SPEED);
-    rightCarridge.set(-RobotMap.CARRIAGE_SPEED);
+    leftCarridge.set(RobotMap.CARRIAGE_RELEASE_SPEED);
+    rightCarridge.set(-RobotMap.CARRIAGE_RELEASE_SPEED);
   }
 
   public void acquire(){
-    leftCarridge.set(-RobotMap.CARRIAGE_SPEED);
-    rightCarridge.set(RobotMap.CARRIAGE_SPEED);
+    leftCarridge.set(-RobotMap.CARRIAGE_ACQUIRE_SPEED);
+    rightCarridge.set(RobotMap.CARRIAGE_ACQUIRE_SPEED);
   }
 
   public void stopCarridge(){

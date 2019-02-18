@@ -21,6 +21,9 @@ public class OI {
   public final Joystick OPERATOR = new Joystick(RobotMap.OPERATOR_CONTROL_PORT);
 
 
+  private final JoystickButton LINE_FOLLOW_LEFT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_LEFT_BUTTON_PORT);
+  private final JoystickButton LINE_FOLLOW_RIGHT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_RIGHT_BUTTON_PORT);
+
   private final JoystickButton CARGO_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_BUTTON_PORT);
 
   private final JoystickButton CARGO_ARM_DOWN_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_ARM_DOWN_BUTTON_PORT);
@@ -29,10 +32,10 @@ public class OI {
 
   private final JoystickButton HATCH_BUTTON = new JoystickButton(OPERATOR, RobotMap.HATCH_BUTTON_PORT);
 
-  private final JoystickButton ELEVATOR_1 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_1_BUTTON_PORT);
-  private final JoystickButton ELEVATOR_2 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_2_BUTTON_PORT);
-  private final JoystickButton ELEVATOR_3 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_3_BUTTON_PORT);
-  private final JoystickButton ELEVATOR_INTERRUPT = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_INTERRUPT_BUTTON_PORT);
+  // private final JoystickButton ELEVATOR_1 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_1_BUTTON_PORT);
+  // private final JoystickButton ELEVATOR_2 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_2_BUTTON_PORT);
+  // private final JoystickButton ELEVATOR_3 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_3_BUTTON_PORT);
+  // private final JoystickButton ELEVATOR_INTERRUPT = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_INTERRUPT_BUTTON_PORT);
 
   public OI() {
     CARGO_BUTTON.whileHeld(new StartWheels());
@@ -44,10 +47,13 @@ public class OI {
 
     HATCH_BUTTON.whenPressed(new HatchCommand());
 
-    ELEVATOR_1.whileHeld(new ElevatorStage1());
-    ELEVATOR_2.whileHeld(new ElevatorStage2());
-    ELEVATOR_3.whileHeld(new ElevatorStage3());
-    ELEVATOR_INTERRUPT.whenPressed(new ElevatorInterrupt());
+    LINE_FOLLOW_LEFT.whenPressed(new LineFollow(LineFollow.Direction.LEFT));
+    LINE_FOLLOW_RIGHT.whenPressed(new LineFollow(LineFollow.Direction.RIGHT));
+
+    //ELEVATOR_1.whileHeld(new ElevatorStage1());
+    //ELEVATOR_2.whileHeld(new ElevatorStage2());
+    //ELEVATOR_3.whileHeld(new ElevatorStage3());
+    //ELEVATOR_INTERRUPT.whenPressed(new ElevatorInterrupt());
 
   }
 
