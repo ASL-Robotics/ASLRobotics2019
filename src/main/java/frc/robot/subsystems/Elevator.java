@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -23,24 +24,28 @@ import frc.robot.commands.ElevatorManualCommand;
 public class Elevator extends Subsystem {
   
   // 30 60 90- hatch 40 70 100- ball
-  private final double[] HATCH_ENCODER_VALUES = {0, 0, 0};// {gnd, hatch2, hatch3}; // CHANGE THESE
-  private final double[] BALL_ENCODER_VALUES = {0, 0, 0};// {ball1, ball2, ball3}; // CHANGE THESE
+  private final double[] HATCH_ENCODER_VALUES = {RobotMap.HATCH_STAGE_1, RobotMap.HATCH_STAGE_2, RobotMap.HATCH_STAGE_3};
+  private final double[] BALL_ENCODER_VALUES = {RobotMap.BALL_STAGE_1, RobotMap.BALL_STAGE_2, RobotMap.BALL_STAGE_3};
   public int stage = 1;
 
   // private final double MAX_HEIGHT = 300; // CHANGE THIS 
 
   // Hardware Inits
-  private WPI_TalonSRX pulleyMotor;
+  private TalonSRX pulleyMotor;
   private DigitalInput ballSensor, isDownLimit;
 
   public Elevator() {
-    this.pulleyMotor = new WPI_TalonSRX(RobotMap.ELEVATOR_MOTOR);
+    this.pulleyMotor = new TalonSRX(RobotMap.ELEVATOR_MOTOR);
     this.ballSensor = new DigitalInput(RobotMap.HAS_BALL_SWITCH);
     this.isDownLimit = new DigitalInput(RobotMap.ELEVATOR_DOWN_SWITCH);
 
-    pulleyMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    pulleyMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30);
 		pulleyMotor.setSensorPhase(true);
     pulleyMotor.setSelectedSensorPosition(0, 0, 10);
+
+    // pulleyMotor.config_kP(0, 0.08, 10);
+		// pulleyMotor.config_kI(0, 0, 10);
+		// pulleyMotor.config_kD(0, 0, 10);
   }
 
   public double[] getTargetArray(){
@@ -49,7 +54,7 @@ public class Elevator extends Subsystem {
 
   public void checkForBall() {
     // RobotMap.hasBall = ballSensor.get();
-    if(ballSensor.get()) RobotMap.hasBall = true;
+    if(!ballSensor.get()) RobotMap.hasBall = true;
   }
   public boolean getBallSensor(){
     return ballSensor.get();
@@ -65,13 +70,26 @@ public class Elevator extends Subsystem {
     BALL_ENCODER_VALUES[2] = RobotMap.BALL_STAGE_3;
   }
 
-  public double getEncoderDistance() { return -pulleyMotor.getSelectedSensorPosition(); }
+  public double getEncoderDistance() { 
+    return -pulleyMotor.getSelectedSensorPosition();
+  }
 
-  public void setMotorPosition(double position) { pulleyMotor.set(ControlMode.Position, -position); }
+  public void setMotorPosition(double position) { 
+    // pulleyMotor.setIntegralAccumulator(0, 0, 10);
+    // pulleyMotor.set(ControlMode.Position, -position);
+    // System.out.println(Math.abs(position-pulleyMotor.getSelectedSensorPosition()));
 
-  public void setMotorSpeed(double speed) { pulleyMotor.set(speed);}
+    double speed = position-getEncoderDistance();
+    speed /= 20000;
+    if(speed>=0) speed += .15;
+    // else speed -= .15;
+    setMotorSpeed(speed);
+    // System.out.println(speed);
+  }
 
-  public void stopMotor() { pulleyMotor.set(ControlMode.Current, 0); }
+  public void setMotorSpeed(double speed) { pulleyMotor.set(ControlMode.PercentOutput, speed);}
+
+  public void stopMotor() { pulleyMotor.set(ControlMode.PercentOutput, 0);}
 
   public boolean isDown(){ return !isDownLimit.get(); }
 
@@ -79,6 +97,7 @@ public class Elevator extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+    // setDefaultCommand(new ElevatorAutoCommand());
     setDefaultCommand(new ElevatorManualCommand());
   }
 }

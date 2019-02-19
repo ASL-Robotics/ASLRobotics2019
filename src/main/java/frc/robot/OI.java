@@ -26,18 +26,16 @@ public class OI {
 
   private final JoystickButton CARGO_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_BUTTON_PORT);
 
-  // private final JoystickButton CARGO_ARM_DOWN_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_ARM_DOWN_BUTTON_PORT);
-
   private final JoystickButton CARGO_DEPLOY_BUTTON = new JoystickButton(OPERATOR, RobotMap.DEPLOY_CARGO_BUTTON_PORT);
 
   private final JoystickButton HATCH_BUTTON = new JoystickButton(OPERATOR, RobotMap.HATCH_BUTTON_PORT);
 
   private final JoystickButton ARM_UP_BUTTON = new JoystickButton(OPERATOR, RobotMap.ARM_UP_BUTTON_PORT);
 
-  // private final JoystickButton ELEVATOR_1 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_1_BUTTON_PORT);
-  // private final JoystickButton ELEVATOR_2 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_2_BUTTON_PORT);
-  // private final JoystickButton ELEVATOR_3 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_3_BUTTON_PORT);
-  // private final JoystickButton ELEVATOR_MANUAL = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_MANUAL_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_1 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_1_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_2 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_2_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_3 = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_3_BUTTON_PORT);
+  private final JoystickButton ELEVATOR_MANUAL = new JoystickButton(OPERATOR, RobotMap.ELEVATOR_MANUAL_BUTTON_PORT);
 
   public OI() {
     CARGO_BUTTON.whileHeld(new StartWheels());
@@ -47,21 +45,23 @@ public class OI {
 
     ARM_UP_BUTTON.whenPressed(new ArmUp());
 
-    // CARGO_ARM_DOWN_BUTTON.whenPressed(new ArmDown());
-
     CARGO_DEPLOY_BUTTON.whileHeld(new ReleaseCargo());
 
     HATCH_BUTTON.whenPressed(new HatchCommand());
-    // HATCH_BUTTON.whileHeld(new HatchForward());
-    // HATCH_BUTTON.whenReleased(new HatchReverse());
+
+    ELEVATOR_MANUAL.toggleWhenPressed(new ElevatorManualCommand());
+    ELEVATOR_1.whenPressed(new ElevatorSetStage(1));
+    ELEVATOR_2.whenPressed(new ElevatorSetStage(2));
+    ELEVATOR_3.whenPressed(new ElevatorSetStage(3));
+
+    // ELEVATOR_1.whileHeld(new ElevatorAutoCommand());
+    // ELEVATOR_2.whileHeld(new ElevatorAutoCommand());
+    // ELEVATOR_3.whileHeld(new ElevatorAutoCommand());
 
     LINE_FOLLOW_LEFT.whileHeld(new LineFollow(LineFollow.Direction.LEFT));
     LINE_FOLLOW_RIGHT.whileHeld(new LineFollow(LineFollow.Direction.RIGHT));
 
-    // ELEVATOR_1.whileHeld(new ElevatorSetStage(1));
-    // ELEVATOR_2.whileHeld(new ElevatorSetStage(2));
-    // ELEVATOR_3.whileHeld(new ElevatorSetStage(3));
-    // ELEVATOR_MANUAL.toggleWhenPressed(new ElevatorManualCommand());
+
 
   }
 

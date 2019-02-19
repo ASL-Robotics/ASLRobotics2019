@@ -26,7 +26,6 @@ public class RobotMap {
 
   
   public static final int CARGO_BUTTON_PORT = 6;
-        // public static final int CARGO_ARM_DOWN_BUTTON_PORT = 9;
 
   public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
@@ -34,9 +33,9 @@ public class RobotMap {
 
   public static final int ARM_UP_BUTTON_PORT = 7;
 
-  public static final int ELEVATOR_1_BUTTON_PORT = 1;
-  public static final int ELEVATOR_2_BUTTON_PORT = 3;
-  public static final int ELEVATOR_3_BUTTON_PORT = 4;
+  public static final int ELEVATOR_1_BUTTON_PORT = 4;
+  public static final int ELEVATOR_2_BUTTON_PORT = 2;
+  public static final int ELEVATOR_3_BUTTON_PORT = 1;
   public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;
 
     // axes
@@ -95,13 +94,13 @@ public class RobotMap {
 
 
   // ELEVATOR STAGES
-  public static final int BALL_STAGE_1 = 0;
-  public static final int BALL_STAGE_2 = 0;
-  public static final int BALL_STAGE_3 = 0;
+  public static final int BALL_STAGE_1 = 25000;
+  public static final int BALL_STAGE_2 = 57500;
+  public static final int BALL_STAGE_3 = 85000;
 
   public static final int HATCH_STAGE_1 = 0;
-  public static final int HATCH_STAGE_2 = 0;
-  public static final int HATCH_STAGE_3 = 0;
+  public static final int HATCH_STAGE_2 = 31500;
+  public static final int HATCH_STAGE_3 = 63600;
 
 
   // OTHER

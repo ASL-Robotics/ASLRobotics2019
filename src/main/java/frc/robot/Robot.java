@@ -25,7 +25,13 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
 
-  public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
+  /**
+	 *
+	 */
+	
+	private static final Boolean BOOLEAN = new Boolean(true);
+
+public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 
   public static final Drivetrain DRIVETRAIN = new Drivetrain();
   public static final Hatch HATCH = new Hatch();
@@ -35,7 +41,8 @@ public class Robot extends TimedRobot {
   public static final IntakeWheels INTAKE_WHEELS = new IntakeWheels();
   public static OI oi;
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  // SendableChooser<Command> m_chooser = new SendableChooser<>();
+  SendableChooser<Boolean> hasBallOverrideChooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -57,6 +64,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ElevatorEncoder", ELEVATOR.getEncoderDistance());
     SmartDashboard.putNumber("LeftSpeed", DRIVETRAIN.getLeftEncoderSpeed());
     SmartDashboard.putNumber("RightSpeed", DRIVETRAIN.getRightEncoderSpeed());
+
+    hasBallOverrideChooser.addOption("True", true);
+    hasBallOverrideChooser.setDefaultOption("False", false);
   }
 
   /**
@@ -70,6 +80,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     ELEVATOR.checkForBall();
+    if(hasBallOverrideChooser.getSelected()) RobotMap.hasBall = true;
     if(ELEVATOR.isDown()){
       ELEVATOR.resetEncoder();
       ELEVATOR.resetArrays();
@@ -79,7 +90,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.getEntry("c").forceSetBoolean(DRIVETRAIN.getCenterSensor());
     SmartDashboard.getEntry("r").forceSetBoolean(DRIVETRAIN.getRightSensor());
     SmartDashboard.getEntry("ElevatorDown").forceSetBoolean(ELEVATOR.isDown());
-    SmartDashboard.getEntry("HasBall").forceSetBoolean(/*RobotMap.hasBall*/ELEVATOR.getBallSensor());
+    SmartDashboard.getEntry("HasBall").forceSetBoolean(RobotMap.hasBall);
 
     SmartDashboard.getEntry("ElevatorEncoder").forceSetNumber(ELEVATOR.getEncoderDistance());
     SmartDashboard.getEntry("LeftSpeed").forceSetNumber(DRIVETRAIN.getLeftEncoderSpeed());
@@ -116,7 +127,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    // m_autonomousCommand = m_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -156,7 +167,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    System.out.println(pdp.getCurrent(10));
+    // System.out.println(pdp.getCurrent(10));
+    // System.out.println(ELEVATOR.stage);
   }
 
   /**

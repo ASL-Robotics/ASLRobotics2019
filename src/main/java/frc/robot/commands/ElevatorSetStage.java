@@ -23,7 +23,7 @@ public class ElevatorSetStage extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.ELEVATOR.checkForBall();
+    // Robot.ELEVATOR.checkForBall();
     Robot.ELEVATOR.stage = stg;
   }
 
