@@ -29,9 +29,7 @@ public class Robot extends TimedRobot {
 	 *
 	 */
 	
-	private static final Boolean BOOLEAN = new Boolean(true);
-
-public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
+  public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
 
   public static final Drivetrain DRIVETRAIN = new Drivetrain();
   public static final Hatch HATCH = new Hatch();
@@ -102,7 +100,6 @@ public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
     SmartDashboard.getEntry("RightSpeed").forceSetNumber(DRIVETRAIN.getRightEncoderSpeed());
 
     // System.out.println(pdp.getCurrent(10)); //ALSO USEFUL: motor speed, batery voltage, enc position, motor current, joystick signal
-    // System.out.println(": "+ELEVATOR.getEncoderDistance());
   }
 
   /**

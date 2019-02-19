@@ -34,7 +34,6 @@ public class ElevatorAutoCommand extends Command {
     Robot.ELEVATOR.positionOffset += (int) (100*Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
     if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1 
           && Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) < .005){
-      // Robot.ELEVATOR.setMotorSpeed(-.5);
       tempSpeed = -Robot.ELEVATOR.getEncoderDistance()/20000;
       if(tempSpeed < -.5) tempSpeed = -.5;
       if(tempSpeed > -.3) tempSpeed = -.3;
@@ -45,7 +44,6 @@ public class ElevatorAutoCommand extends Command {
     }
     else{
       Robot.ELEVATOR.setMotorPosition(targets[Robot.ELEVATOR.stage-1]);
-      // System.out.println(targets[Robot.ELEVATOR.stage-1]);
     }
   }
 

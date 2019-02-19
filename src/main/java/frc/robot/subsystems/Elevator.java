@@ -10,13 +10,11 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.ElevatorAutoCommand;
-import frc.robot.commands.ElevatorManualCommand;
 
 /**
  * Elevator Subsystem Code
@@ -27,8 +25,6 @@ public class Elevator extends Subsystem {
   public final double[] HATCH_ENCODER_VALUES = {RobotMap.HATCH_STAGE_1, RobotMap.HATCH_STAGE_2, RobotMap.HATCH_STAGE_3};
   public final double[] BALL_ENCODER_VALUES = {RobotMap.BALL_STAGE_1, RobotMap.BALL_STAGE_2, RobotMap.BALL_STAGE_3};
   public int stage = 1, positionOffset = 0;
-
-  // private final double MAX_HEIGHT = 300; // CHANGE THIS 
 
   // Hardware Inits
   private TalonSRX pulleyMotor;
@@ -43,9 +39,6 @@ public class Elevator extends Subsystem {
 		pulleyMotor.setSensorPhase(true);
     pulleyMotor.setSelectedSensorPosition(0, 0, 10);
 
-    // pulleyMotor.config_kP(0, 0.08, 10);
-		// pulleyMotor.config_kI(0, 0, 10);
-		// pulleyMotor.config_kD(0, 0, 10);
   }
 
   public double[] getTargetArray(){
@@ -53,7 +46,6 @@ public class Elevator extends Subsystem {
   }
 
   public void checkForBall() {
-    // RobotMap.hasBall = ballSensor.get();
     if(!ballSensor.get()) RobotMap.hasBall = true;
   }
   public boolean getBallSensor(){
@@ -75,16 +67,10 @@ public class Elevator extends Subsystem {
   }
 
   public void setMotorPosition(double position) { 
-    // pulleyMotor.setIntegralAccumulator(0, 0, 10);
-    // pulleyMotor.set(ControlMode.Position, -position);
-    // System.out.println(Math.abs(position-pulleyMotor.getSelectedSensorPosition()));
-
     double speed = position-getEncoderDistance();
     speed /= 20000;
     if(speed>=0) speed += .15;
-    // else speed -= .15;
     setMotorSpeed(speed);
-    // System.out.println(speed);
   }
 
   public void setMotorSpeed(double speed) { pulleyMotor.set(ControlMode.PercentOutput, speed);}
@@ -97,7 +83,7 @@ public class Elevator extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // setDefaultCommand(new ElevatorAutoCommand());
-    setDefaultCommand(new ElevatorManualCommand());
+    setDefaultCommand(new ElevatorAutoCommand());
+    // setDefaultCommand(new ElevatorManualCommand());
   }
 }

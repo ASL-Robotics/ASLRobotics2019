@@ -54,7 +54,6 @@ public class RobotMap {
   public static final int ELEVATOR_MOTOR = 5;
 
   public static final int INTAKE_MOTOR = 6;
-      // public static final int INTAKE_LIFT_MOTOR = 7;
 
   public static final int LEFT_CARRIAGE_MOTOR = 7;
   public static final int RIGHT_CARRIAGE_MOTOR = 8;
@@ -73,8 +72,6 @@ public class RobotMap {
   public static final int PHOTO_SWITCH_CENTER = 2;
   public static final int PHOTO_SWITCH_RIGHT = 3;
 
-  // public static final int INTAKE_UP_LIMIT = 3;
-  // public static final int INTAKE_DOWN_LIMIT = 4;
   public static final int HAS_BALL_SWITCH = 4;
   public static final int ELEVATOR_DOWN_SWITCH = 0;
 
@@ -83,7 +80,6 @@ public class RobotMap {
     // cargo
   public static final double CARRIAGE_ACQUIRE_SPEED = 1.0;
   public static final double CARRIAGE_RELEASE_SPEED = 1.0;
-    // public static final double INTAKE_LIFT_SPEED = .5;
 
     // elevator
   public static final double ELEVATOR_LIFT_SPEED = .4;
