@@ -65,6 +65,11 @@ public static final PowerDistributionPanel pdp = new PowerDistributionPanel();
     SmartDashboard.putNumber("LeftSpeed", DRIVETRAIN.getLeftEncoderSpeed());
     SmartDashboard.putNumber("RightSpeed", DRIVETRAIN.getRightEncoderSpeed());
 
+    SmartDashboard.putString("ElevatorMode", "Auto");
+
+    SmartDashboard.putNumberArray("HatchPositionValues", ELEVATOR.HATCH_ENCODER_VALUES);
+    SmartDashboard.putNumberArray("BallPositionValues", ELEVATOR.BALL_ENCODER_VALUES);
+
     hasBallOverrideChooser.addOption("True", true);
     hasBallOverrideChooser.setDefaultOption("False", false);
   }

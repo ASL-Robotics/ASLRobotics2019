@@ -31,6 +31,7 @@ public class ElevatorAutoCommand extends Command {
   @Override
   protected void execute() {
     targets = Robot.ELEVATOR.getTargetArray();
+    Robot.ELEVATOR.positionOffset += (int) (100*Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
     if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1 
           && Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) < .005){
       // Robot.ELEVATOR.setMotorSpeed(-.5);
@@ -58,6 +59,7 @@ public class ElevatorAutoCommand extends Command {
   @Override
   protected void end() {
     Robot.ELEVATOR.stopMotor();
+    Robot.ELEVATOR.positionOffset = 0;
   }
 
   // Called when another command which requires one or more of the same

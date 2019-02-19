@@ -24,9 +24,9 @@ import frc.robot.commands.ElevatorManualCommand;
 public class Elevator extends Subsystem {
   
   // 30 60 90- hatch 40 70 100- ball
-  private final double[] HATCH_ENCODER_VALUES = {RobotMap.HATCH_STAGE_1, RobotMap.HATCH_STAGE_2, RobotMap.HATCH_STAGE_3};
-  private final double[] BALL_ENCODER_VALUES = {RobotMap.BALL_STAGE_1, RobotMap.BALL_STAGE_2, RobotMap.BALL_STAGE_3};
-  public int stage = 1;
+  public final double[] HATCH_ENCODER_VALUES = {RobotMap.HATCH_STAGE_1, RobotMap.HATCH_STAGE_2, RobotMap.HATCH_STAGE_3};
+  public final double[] BALL_ENCODER_VALUES = {RobotMap.BALL_STAGE_1, RobotMap.BALL_STAGE_2, RobotMap.BALL_STAGE_3};
+  public int stage = 1, positionOffset = 0;
 
   // private final double MAX_HEIGHT = 300; // CHANGE THIS 
 

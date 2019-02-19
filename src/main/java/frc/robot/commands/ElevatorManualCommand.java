@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -22,6 +23,7 @@ public class ElevatorManualCommand extends Command {
   @Override
   protected void initialize() {
     Robot.ELEVATOR.stopMotor();
+    SmartDashboard.getEntry("ElevatorMode").forceSetString("Manual");
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,6 +43,7 @@ public class ElevatorManualCommand extends Command {
   @Override
   protected void end() {
     Robot.ELEVATOR.stopMotor();
+    SmartDashboard.getEntry("ElevatorMode").forceSetString("Auto");
   }
 
   // Called when another command which requires one or more of the same
