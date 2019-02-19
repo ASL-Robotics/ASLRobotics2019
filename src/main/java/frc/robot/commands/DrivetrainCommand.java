@@ -35,26 +35,26 @@ public class DrivetrainCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)>-.002 && 
-          Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)<.002 && 
-          Math.abs(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS))>.03){
-      lspeed = Robot.DRIVETRAIN.getLeftEncoderSpeed();
-      rspeed = -Robot.DRIVETRAIN.getRightEncoderSpeed();
-      if(lspeed > rspeed){
-        diff = lspeed-rspeed;
-        diff /= lspeed;
-        loffset -= diff/20;
-        roffset += diff/20;
-      } else {
-        diff = rspeed-lspeed;
-        diff /= rspeed;
-        loffset += diff/20;
-        roffset -= diff/20;
-      }
-    } else {
-      loffset = 0;
-      roffset = 0;
-    }
+    // if(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)>-.002 && 
+    //       Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS)<.002 && 
+    //       Math.abs(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS))>.03){
+    //   lspeed = Robot.DRIVETRAIN.getLeftEncoderSpeed();
+    //   rspeed = -Robot.DRIVETRAIN.getRightEncoderSpeed();
+    //   if(lspeed > rspeed){
+    //     diff = lspeed-rspeed;
+    //     diff /= lspeed;
+    //     loffset -= diff/20;
+    //     roffset += diff/20;
+    //   } else {
+    //     diff = rspeed-lspeed;
+    //     diff /= rspeed;
+    //     loffset += diff/20;
+    //     roffset -= diff/20;
+    //   }
+    // } else {
+    //   loffset = 0;
+    //   roffset = 0;
+    // }
 
     Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
   }

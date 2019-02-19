@@ -60,8 +60,8 @@ public class Drivetrain extends Subsystem {
     // driveTrain.tankDrive(leftSpeed, rightSpeed);
     leftSpeed *= Math.abs(leftSpeed);
     rightSpeed *= Math.abs(rightSpeed);
-    left.set(leftSpeed);
-    right.set(-rightSpeed);
+    left.set(-leftSpeed);
+    right.set(rightSpeed);
   }
   public void arcadeDrive(double x, double z){
     // driveTrain.arcadeDrive(x*.85, z*.6);
