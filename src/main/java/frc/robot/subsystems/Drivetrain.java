@@ -9,12 +9,13 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-
+import frc.robot.DriveControl.DriveControl;
 import frc.robot.commands.DrivetrainCommand;
 /**
  * Add your docs here.
@@ -68,6 +69,12 @@ public class Drivetrain extends Subsystem {
     x *= .85;
     z *= .6;
     tankDrive(x+z, x-z);
+  }
+
+  // -1 to 1 are passed
+  public void freezyDrive(double leftSpeed, double rightSpeed) {
+    left.set(-leftSpeed);
+    right.set(rightSpeed);
   }
 
   public String getPESensors(){ // REVERSE THIS AT COMPETITION

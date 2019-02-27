@@ -24,13 +24,14 @@ public class RobotMap {
   public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
   public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
 
+  public static final int QUICK_TURN_BUTTON_PORT = 1; // need to set correct button port
   
   public static final int CARGO_BUTTON_PORT = 6;
 
   public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
   public static final int HATCH_BUTTON_PORT = 3;
-
+ 
   public static final int ARM_UP_BUTTON_PORT = 7;
 
   public static final int ELEVATOR_1_BUTTON_PORT = 4;

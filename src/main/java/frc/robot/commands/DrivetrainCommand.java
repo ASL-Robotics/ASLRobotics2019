@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.DriveControl.DriveControl;
 
 public class DrivetrainCommand extends Command {
 
@@ -56,7 +57,9 @@ public class DrivetrainCommand extends Command {
     //   roffset = 0;
     // }
 
-    Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
+    double[] speeds = DriveControl.calculateDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS), Robot.oi.DRIVER.getRawButton(RobotMap.QUICK_TURN_BUTTON_PORT));
+    Robot.DRIVETRAIN.freezyDrive(speeds[0], speeds[1]);
+    //Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
   }
 
   // Make this return true when this Command no longer needs to run execute()
