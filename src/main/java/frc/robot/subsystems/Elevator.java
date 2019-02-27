@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.ElevatorAutoCommand;
+import frc.robot.commands.ElevatorManualCommand;
 
 /**
  * Elevator Subsystem Code
@@ -83,7 +84,7 @@ public class Elevator extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ElevatorAutoCommand());
-    // setDefaultCommand(new ElevatorManualCommand());
+    // setDefaultCommand(new ElevatorAutoCommand());
+    setDefaultCommand(new ElevatorManualCommand());
   }
 }
