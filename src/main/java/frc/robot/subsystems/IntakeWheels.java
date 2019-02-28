@@ -27,7 +27,7 @@ public class IntakeWheels extends Subsystem {
   }
 
   public void setWheelMotor(Double speed){
-    wheelMotor.set(speed);
+    wheelMotor.set(-speed);
   }
 
   @Override

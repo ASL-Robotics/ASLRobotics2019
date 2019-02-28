@@ -15,35 +15,65 @@ package frc.robot;
  */
 public class RobotMap {
 
-  // OI Ports
-    // joysticks
-  public static final int DRIVER_CONTROL_PORT = 1;
-  public static final int OPERATOR_CONTROL_PORT = 0;
+  // // 1797 OI Ports 1797
+  //   // joysticks
+  // public static final int DRIVER_CONTROL_PORT = 1;
+  // public static final int OPERATOR_CONTROL_PORT = 0;
 
-    // buttons
-  public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
-  public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
+  //   // buttons
+  // public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
+  // public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
 
-  public static final int QUICK_TURN_BUTTON_PORT = 1; // need to set correct button port
+  // public static final int QUICK_TURN_BUTTON_PORT = 1; // need to set correct button port
   
-  public static final int CARGO_BUTTON_PORT = 6;
+  // public static final int CARGO_BUTTON_PORT = 6;
 
-  public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
+  // public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
-  public static final int HATCH_BUTTON_PORT = 3;
+  // public static final int HATCH_BUTTON_PORT = 3;
  
-  public static final int ARM_UP_BUTTON_PORT = 7;
+  // public static final int ARM_UP_BUTTON_PORT = 7;
 
-  public static final int ELEVATOR_1_BUTTON_PORT = 4;
-  public static final int ELEVATOR_2_BUTTON_PORT = 2;
-  public static final int ELEVATOR_3_BUTTON_PORT = 1;
-  public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;
+  // public static final int ELEVATOR_1_BUTTON_PORT = 4;
+  // public static final int ELEVATOR_2_BUTTON_PORT = 2;
+  // public static final int ELEVATOR_3_BUTTON_PORT = 1;
+  // public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;
 
-    // axes
-  public static final int DRIVE_FORWARD_AXIS = 1;
-  public static final int DRIVE_TURN_AXIS = 4;
+  //   // axes
+  // public static final int DRIVE_FORWARD_AXIS = 1;
+  // public static final int DRIVE_TURN_AXIS = 4;
 
-  public static final int OPERATOR_ELEVATOR_AXIS = 5;
+  // public static final int OPERATOR_ELEVATOR_AXIS = 5;
+
+
+  // 1884 OI Ports 1884
+      // joysticks
+    public static final int DRIVER_CONTROL_PORT = 1;
+    public static final int OPERATOR_CONTROL_PORT = 0;
+  
+      // buttons
+    public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
+    public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
+    public static final int QUICK_TURN_BUTTON_PORT = 6;
+    
+    public static final int CARGO_BUTTON_PORT = 5;
+  
+    public static final int DEPLOY_CARGO_BUTTON_PORT = 6;
+  
+    public static final int HATCH_BUTTON_PORT = 10;
+   
+    public static final int ARM_UP_BUTTON_PORT = 7;//CHANGE THIS
+  
+    public static final int ELEVATOR_1_BUTTON_PORT = 1;
+    public static final int ELEVATOR_2_BUTTON_PORT = 3;
+    public static final int ELEVATOR_3_BUTTON_PORT = 4;
+    public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;//CHANGE THIS
+  
+      // axes
+    public static final int DRIVE_FORWARD_AXIS = 1;
+    public static final int DRIVE_TURN_AXIS = 4;
+  
+    public static final int OPERATOR_ELEVATOR_AXIS = 1;
 
 
   // MOTORS

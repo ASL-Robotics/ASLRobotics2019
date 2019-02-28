@@ -59,7 +59,8 @@ public class DrivetrainCommand extends Command {
     //   roffset = 0;
     // }
 
-    quickTurn = Math.abs(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS)) < .05 || Robot.oi.DRIVER.getRawButton(RobotMap.QUICK_TURN_BUTTON_PORT);
+    quickTurn = Math.abs(Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS)) < .05 
+                || Robot.oi.DRIVER.getRawButton(RobotMap.QUICK_TURN_BUTTON_PORT);
     double[] speeds = DriveControl.calculateDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS), quickTurn);
     Robot.DRIVETRAIN.tankDrive(speeds[0], speeds[1]);
     //Robot.DRIVETRAIN.arcadeDrive(loffset-Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_FORWARD_AXIS), roffset+Robot.oi.DRIVER.getRawAxis(RobotMap.DRIVE_TURN_AXIS));
