@@ -21,13 +21,13 @@ public class RobotMap {
   // public static final int OPERATOR_CONTROL_PORT = 0;
 
   //   // buttons
-  // public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
-  // public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
-
-  // public static final int QUICK_TURN_BUTTON_PORT = 1; // need to set correct button port
+  // //public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 3;
+  // //public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 4;
+  // public static final int QUICK_TURN_BUTTON_PORT_1 = 1; // need to set correct button port
+  // public static final int QUICK_TURN_BUTTON_PORT_2 = 1; // need to set correct button port
+  // public static final int VISION_BUTTON_PORT = 2; // need to set correct button port
   
   // public static final int CARGO_BUTTON_PORT = 6;
-
   // public static final int DEPLOY_CARGO_BUTTON_PORT = 5;
 
   // public static final int HATCH_BUTTON_PORT = 3;
@@ -52,12 +52,13 @@ public class RobotMap {
     public static final int OPERATOR_CONTROL_PORT = 0;
   
       // buttons
-    public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5;
-    public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6;
-    public static final int QUICK_TURN_BUTTON_PORT = 6;
+    // public static final int LINE_FOLLOW_LEFT_BUTTON_PORT = 5; //CHANGE THIS
+    // public static final int LINE_FOLLOW_RIGHT_BUTTON_PORT = 6; //CHANGE THIS
+    public static final int QUICK_TURN_BUTTON_PORT_1 = 5;
+    public static final int QUICK_TURN_BUTTON_PORT_2 = 6;
+    public static final int VISION_BUTTON_PORT = 1;
     
     public static final int CARGO_BUTTON_PORT = 5;
-  
     public static final int DEPLOY_CARGO_BUTTON_PORT = 6;
   
     public static final int HATCH_BUTTON_PORT = 10;

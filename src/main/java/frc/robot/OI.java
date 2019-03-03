@@ -21,8 +21,10 @@ public class OI {
   public final Joystick OPERATOR = new Joystick(RobotMap.OPERATOR_CONTROL_PORT);
 
 
-  private final JoystickButton LINE_FOLLOW_LEFT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_LEFT_BUTTON_PORT);
-  private final JoystickButton LINE_FOLLOW_RIGHT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_RIGHT_BUTTON_PORT);
+  // private final JoystickButton LINE_FOLLOW_LEFT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_LEFT_BUTTON_PORT);
+  // private final JoystickButton LINE_FOLLOW_RIGHT = new JoystickButton(DRIVER, RobotMap.LINE_FOLLOW_RIGHT_BUTTON_PORT);
+  private final JoystickButton VISION_BUTTON = new JoystickButton(DRIVER, RobotMap.VISION_BUTTON_PORT);
+
 
   private final JoystickButton CARGO_BUTTON = new JoystickButton(OPERATOR, RobotMap.CARGO_BUTTON_PORT);
 
@@ -53,6 +55,8 @@ public class OI {
     ELEVATOR_1.whenPressed(new ElevatorSetStage(1));
     ELEVATOR_2.whenPressed(new ElevatorSetStage(2));
     ELEVATOR_3.whenPressed(new ElevatorSetStage(3));
+
+    VISION_BUTTON.whileHeld(new Visiontime());
 
     // ELEVATOR_1.whileHeld(new ElevatorAutoCommand());
     // ELEVATOR_2.whileHeld(new ElevatorAutoCommand());

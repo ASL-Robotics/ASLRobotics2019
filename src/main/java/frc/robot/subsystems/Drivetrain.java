@@ -9,13 +9,11 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.DriveControl.DriveControl;
 import frc.robot.commands.DrivetrainCommand;
 /**
  * Add your docs here.
@@ -30,7 +28,6 @@ public class Drivetrain extends Subsystem {
 
   private SpeedControllerGroup left;
   private SpeedControllerGroup right;
-  // private DifferentialDrive driveTrain;
 
   private DigitalInput l, c, r;
 
@@ -43,7 +40,6 @@ public class Drivetrain extends Subsystem {
 
     left = new SpeedControllerGroup(frontLeft, backLeft);
     right = new SpeedControllerGroup(frontRight, backRight);
-    // driveTrain = new DifferentialDrive(left, right);
 
     l = new DigitalInput(RobotMap.PHOTO_SWITCH_LEFT);
     c = new DigitalInput(RobotMap.PHOTO_SWITCH_CENTER);
@@ -61,30 +57,27 @@ public class Drivetrain extends Subsystem {
     left.set(-leftSpeed);
     right.set(rightSpeed);
   }
-  // public void arcadeDrive(double x, double z){
-  //   // driveTrain.arcadeDrive(x*.85, z*.6);
-  //   x *= .85;
-  //   z *= .6;
-  //   tankDrive(x+z, x-z);
-  // }
+  public void arcadeDrive(double x, double z, boolean quickTurn){
+    x *= x*x;
+    z *= Math.abs(z);
+    if(Math.abs(x)<=.01 && !quickTurn) z *= .5;
+    else if(!quickTurn) z *= x;
+    tankDrive(x-z, x+z);
+  }
 
-  // // -1 to 1 are passed
-  // public void freezyDrive(double leftSpeed, double rightSpeed) {
-  //   left.set(-leftSpeed);
-  //   right.set(rightSpeed);
-  // }
 
-  public String getPESensors(){ // REVERSE THIS AT COMPETITION
+  public String getPESensors(){ 
     String ret = "";
 
     ret += l.get()? "1" : "0";
     ret += c.get()? "1" : "0";
     ret += r.get()? "1" : "0";
-    // ret += l.get()? "0" : "1";
-    // ret += c.get()? "0" : "1";
-    // ret += r.get()? "0" : "1";
 
     return ret;
+  }
+
+  public void arcadeDriveVision(double x, double z){
+    tankDrive(x+z, x-z);
   }
 
   public int getLeftEncoderSpeed() { return frontLeft.getSelectedSensorVelocity(); }

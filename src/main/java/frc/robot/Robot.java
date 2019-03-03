@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
   SendableChooser<Boolean> hasBallOverrideChooser = new SendableChooser<>();
+  public static UsbCamera camera;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -52,7 +54,8 @@ public class Robot extends TimedRobot {
     // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     // SmartDashboard.putData("Auto mode", m_chooser);
-    CameraServer.getInstance().startAutomaticCapture();
+    camera = CameraServer.getInstance().startAutomaticCapture();
+
     SmartDashboard.putBoolean("l", DRIVETRAIN.getLeftSensor());
     SmartDashboard.putBoolean("c", DRIVETRAIN.getCenterSensor());
     SmartDashboard.putBoolean("r", DRIVETRAIN.getRightSensor());
