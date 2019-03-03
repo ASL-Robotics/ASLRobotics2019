@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import java.lang.Math;
 import java.lang.reflect.Executable;
 import java.util.ArrayList;
 
@@ -68,18 +67,15 @@ public class Visiontime extends Command {
       });
 
       
-  }
-  visionThread.start();
+    }
+    visionThread.start();
 
-  double centerX;
-  synchronized (imgLock) {
-    centerX = this.centerX;
-  }
-  double turn = centerX - (IMG_WIDTH / 2);
-  Robot.DRIVETRAIN.arcadeDriveVision(0.3, turn * 0.0008);
-    
-
-    
+    double centerX;
+    synchronized (imgLock) {
+      centerX = this.centerX;
+    }
+    double turn = centerX - (IMG_WIDTH / 2);
+    Robot.DRIVETRAIN.arcadeDriveVision(0.3, turn * 0.0008);
 
   }
 
@@ -96,10 +92,10 @@ public class Visiontime extends Command {
     Robot.DRIVETRAIN.tankDrive(0, 0);
     try {
       Thread.sleep(0);
-  } catch (InterruptedException e) {
+    } catch (InterruptedException e) {
       this.interrupted();
       return;
-  }
+    }
     
   }
 
