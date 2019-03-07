@@ -41,7 +41,8 @@ public class Robot extends TimedRobot {
   public static OI oi;
   Command m_autonomousCommand;
   // SendableChooser<Command> m_chooser = new SendableChooser<>();
-  SendableChooser<Boolean> hasBallOverrideChooser = new SendableChooser<>();
+  public static final SendableChooser<Boolean> hasBallOverrideChooser = new SendableChooser<>();
+  public static final SendableChooser<Boolean> elevatorOverrideChooser = new SendableChooser<>();
   public static UsbCamera camera;
 
   /**
@@ -59,20 +60,25 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("l", DRIVETRAIN.getLeftSensor());
     SmartDashboard.putBoolean("c", DRIVETRAIN.getCenterSensor());
     SmartDashboard.putBoolean("r", DRIVETRAIN.getRightSensor());
-    SmartDashboard.putBoolean("ElevatorDown", ELEVATOR.isDown());
-    SmartDashboard.putBoolean("HasBall", RobotMap.hasBall);
+    SmartDashboard.putBoolean("Elevator Down", ELEVATOR.isDown());
+    SmartDashboard.putBoolean("Has Ball", RobotMap.hasBall);
 
-    SmartDashboard.putNumber("ElevatorEncoder", ELEVATOR.getEncoderDistance());
-    SmartDashboard.putNumber("LeftSpeed", DRIVETRAIN.getLeftEncoderSpeed());
-    SmartDashboard.putNumber("RightSpeed", DRIVETRAIN.getRightEncoderSpeed());
+    SmartDashboard.putNumber("Elevator Encoder", ELEVATOR.getEncoderDistance());
+    SmartDashboard.putNumber("Left Speed", DRIVETRAIN.getLeftEncoderSpeed());
+    SmartDashboard.putNumber("Right Speed", DRIVETRAIN.getRightEncoderSpeed());
 
-    SmartDashboard.putString("ElevatorMode", "Auto");
+    SmartDashboard.putString("Elevator Mode", "Auto");
 
-    SmartDashboard.putNumberArray("HatchPositionValues", ELEVATOR.HATCH_ENCODER_VALUES);
-    SmartDashboard.putNumberArray("BallPositionValues", ELEVATOR.BALL_ENCODER_VALUES);
+    SmartDashboard.putNumberArray("Hatch Position Values", ELEVATOR.HATCH_ENCODER_VALUES);
+    SmartDashboard.putNumberArray("Ball Position Values", ELEVATOR.BALL_ENCODER_VALUES);
 
+    SmartDashboard.putData("Has Ball Override", hasBallOverrideChooser); // true if has ball
     hasBallOverrideChooser.addOption("True", true);
     hasBallOverrideChooser.setDefaultOption("False", false);
+
+    SmartDashboard.putData("Elevator Manual Override", hasBallOverrideChooser); // true if manual
+    hasBallOverrideChooser.addOption("Manual", true);
+    hasBallOverrideChooser.setDefaultOption("Auto / Controller Override", false);
   }
 
   /**
@@ -95,12 +101,14 @@ public class Robot extends TimedRobot {
     SmartDashboard.getEntry("l").forceSetBoolean(DRIVETRAIN.getLeftSensor());
     SmartDashboard.getEntry("c").forceSetBoolean(DRIVETRAIN.getCenterSensor());
     SmartDashboard.getEntry("r").forceSetBoolean(DRIVETRAIN.getRightSensor());
-    SmartDashboard.getEntry("ElevatorDown").forceSetBoolean(ELEVATOR.isDown());
-    SmartDashboard.getEntry("HasBall").forceSetBoolean(RobotMap.hasBall);
+    SmartDashboard.getEntry("Elevator Down").forceSetBoolean(ELEVATOR.isDown());
+    SmartDashboard.getEntry("Has Ball").forceSetBoolean(RobotMap.hasBall);
 
-    SmartDashboard.getEntry("ElevatorEncoder").forceSetNumber(ELEVATOR.getEncoderDistance());
-    SmartDashboard.getEntry("LeftSpeed").forceSetNumber(DRIVETRAIN.getLeftEncoderSpeed());
-    SmartDashboard.getEntry("RightSpeed").forceSetNumber(DRIVETRAIN.getRightEncoderSpeed());
+    SmartDashboard.getEntry("Elevator Encoder").forceSetNumber(ELEVATOR.getEncoderDistance());
+    SmartDashboard.getEntry("Left Speed").forceSetNumber(DRIVETRAIN.getLeftEncoderSpeed());
+    SmartDashboard.getEntry("Right Speed").forceSetNumber(DRIVETRAIN.getRightEncoderSpeed());
+
+
 
     // System.out.println(pdp.getCurrent(10)); //ALSO USEFUL: motor speed, batery voltage, enc position, motor current, joystick signal
   }

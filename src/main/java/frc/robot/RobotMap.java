@@ -16,6 +16,8 @@ package frc.robot;
 public class RobotMap {
 
   // // 1797 OI Ports 1797
+  // public static final String TEAM_NUM = "1797";
+
   //   // joysticks
   // public static final int DRIVER_CONTROL_PORT = 1;
   // public static final int OPERATOR_CONTROL_PORT = 0;
@@ -47,6 +49,9 @@ public class RobotMap {
 
 
   // 1884 OI Ports 1884
+    public static final String TEAM_NUM = "1884";
+
+
       // joysticks
     public static final int DRIVER_CONTROL_PORT = 1;
     public static final int OPERATOR_CONTROL_PORT = 0;
@@ -63,12 +68,12 @@ public class RobotMap {
   
     public static final int HATCH_BUTTON_PORT = 10;
    
-    public static final int ARM_UP_BUTTON_PORT = 7;//CHANGE THIS
+    public static final int ARM_UP_BUTTON_PORT = 8;
   
     public static final int ELEVATOR_1_BUTTON_PORT = 1;
     public static final int ELEVATOR_2_BUTTON_PORT = 3;
     public static final int ELEVATOR_3_BUTTON_PORT = 4;
-    public static final int ELEVATOR_MANUAL_BUTTON_PORT = 8;//CHANGE THIS
+    public static final int ELEVATOR_MANUAL_BUTTON_PORT = 7;
   
       // axes
     public static final int DRIVE_FORWARD_AXIS = 1;

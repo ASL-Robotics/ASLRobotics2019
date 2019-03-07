@@ -23,7 +23,7 @@ public class ElevatorManualCommand extends Command {
   @Override
   protected void initialize() {
     Robot.ELEVATOR.stopMotor();
-    SmartDashboard.getEntry("ElevatorMode").forceSetString("Manual");
+    SmartDashboard.getEntry("Elevator Mode").forceSetString("Manual");
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -43,7 +43,7 @@ public class ElevatorManualCommand extends Command {
   @Override
   protected void end() {
     Robot.ELEVATOR.stopMotor();
-    SmartDashboard.getEntry("ElevatorMode").forceSetString("Auto");
+    SmartDashboard.getEntry("Elevator Mode").forceSetString("Auto");
   }
 
   // Called when another command which requires one or more of the same

@@ -30,20 +30,26 @@ public class ElevatorAutoCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    targets = Robot.ELEVATOR.getTargetArray();
-    Robot.ELEVATOR.positionOffset += (int) (100*Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
-    if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1 
-          && Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) < .005){
-      tempSpeed = -Robot.ELEVATOR.getEncoderDistance()/20000;
-      if(tempSpeed < -.5) tempSpeed = -.5;
-      if(tempSpeed > -.3) tempSpeed = -.3;
-      Robot.ELEVATOR.setMotorSpeed(tempSpeed);
-      System.out.println(tempSpeed);
-    }else if(!RobotMap.hasBall && Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1) {
-      Robot.ELEVATOR.stopMotor();
-    }
-    else{
-      Robot.ELEVATOR.setMotorPosition(targets[Robot.ELEVATOR.stage-1]);
+    if(Robot.elevatorOverrideChooser.getSelected()){
+        if(Robot.ELEVATOR.isDown() && -Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) <= 0) Robot.ELEVATOR.setMotorSpeed(0);
+        else Robot.ELEVATOR.setMotorSpeed(-Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
+
+    } else {
+        targets = Robot.ELEVATOR.getTargetArray();
+        Robot.ELEVATOR.positionOffset += (int) (100*Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS));
+        if(!RobotMap.hasBall && !Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1 
+              && Robot.oi.OPERATOR.getRawAxis(RobotMap.OPERATOR_ELEVATOR_AXIS) < .005){
+          tempSpeed = -Robot.ELEVATOR.getEncoderDistance()/20000;
+          if(tempSpeed < -.5) tempSpeed = -.5;
+          if(tempSpeed > -.3) tempSpeed = -.3;
+          Robot.ELEVATOR.setMotorSpeed(tempSpeed);
+          System.out.println(tempSpeed);
+        }else if(!RobotMap.hasBall && Robot.ELEVATOR.isDown() && Robot.ELEVATOR.stage==1) {
+          Robot.ELEVATOR.stopMotor();
+        }
+        else{
+          Robot.ELEVATOR.setMotorPosition(targets[Robot.ELEVATOR.stage-1]);
+        }
     }
   }
 

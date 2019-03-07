@@ -58,10 +58,14 @@ public class Drivetrain extends Subsystem {
     right.set(rightSpeed);
   }
   public void arcadeDrive(double x, double z, boolean quickTurn){
-    x *= x*x;
+    // x *= x*x;
+    // z *= Math.abs(z);
+    // if(Math.abs(x)<=.01 && !quickTurn) z *= .5;
+    // else if(!quickTurn) z *= x;
+
+    x *= Math.abs(x);
     z *= Math.abs(z);
-    if(Math.abs(x)<=.01 && !quickTurn) z *= .5;
-    else if(!quickTurn) z *= x;
+
     tankDrive(x-z, x+z);
   }
 

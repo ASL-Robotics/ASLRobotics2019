@@ -85,6 +85,6 @@ public class Elevator extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // setDefaultCommand(new ElevatorAutoCommand());
-    setDefaultCommand(new ElevatorManualCommand());
+    setDefaultCommand(new ElevatorAutoCommand());
   }
 }
